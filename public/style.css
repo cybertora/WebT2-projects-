@@ -1,0 +1,138 @@
+/* Calm minimalistic design */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #444;
+}
+
+.container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 32px;
+    font-size: 28px;
+}
+
+label {
+    display: block;
+    margin: 20px 0 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #fafafa;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #a8dadc;
+    background: white;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+button {
+    margin-top: 32px;
+    width: 100%;
+    padding: 16px;
+    background: #a8dadc;
+    color: #1d3557;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #90c9cd;
+}
+
+.result {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 12px;
+    background: #f8f9fa;
+    border-left: 5px solid;
+}
+
+.result h3 {
+    margin: 0 0 16px;
+    color: #333;
+    font-size: 20px;
+}
+
+.result p {
+    margin: 12px 0;
+    font-size: 17px;
+}
+
+.result p strong {
+    color: #333;
+}
+
+.result span {
+    color: #666;
+    font-weight: normal;
+}
+
+.result h4 {
+    margin: 24px 0 12px;
+    color: #444;
+    font-size: 16px;
+}
+
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Color accents for categories */
+.underweight { border-left-color: #e63946; }
+.normal      { border-left-color: #2a9d8f; }
+.overweight  { border-left-color: #f4a261; }
+.obese       { border-left-color: #e63946; }
+
+.error {
+    margin-top: 20px;
+    padding: 16px;
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: 10px;
+    color: #c44;
+    text-align: center;
+    font-weight: 500;
+}
