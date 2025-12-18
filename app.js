@@ -3,13 +3,16 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'))); // Обслуживаем статические файлы
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Главная страница
+// Настройка EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'public'));
+
+// Главная страница — рендерим index.ejs
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.ejs'));
+    res.render('index', { result: null, error: null });
 });
 
 // Обработка формы
@@ -21,7 +24,10 @@ app.post('/', (req, res) => {
     age = parseFloat(age);
 
     if (!weight || !height || !age || !gender || weight <= 0 || height <= 0 || age <= 0) {
-        return res.render('index', { error: 'Invalid input! Please fill all fields with positive numbers.', result: null });
+        return res.render('index', {
+            result: null,
+            error: 'Invalid input! Please fill all fields with positive numbers.'
+        });
     }
 
     const bmi = weight / (height * height);
@@ -41,7 +47,6 @@ app.post('/', (req, res) => {
         categoryClass = "obese";
     }
 
-    // Приближённый процент жира (формула Deurenberg)
     let bodyFat = gender === "male"
         ? 1.20 * bmi + 0.23 * age - 16.2
         : 1.20 * bmi + 0.23 * age - 5.4;
@@ -89,10 +94,6 @@ app.post('/', (req, res) => {
 
     res.render('index', { result, error: null });
 });
-
-// Настройка шаблонизатора EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public'));
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
