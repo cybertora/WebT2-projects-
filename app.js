@@ -6,16 +6,13 @@ const port = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Настройка EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public'));
 
-// Главная страница — рендерим index.ejs
 app.get('/', (req, res) => {
     res.render('index', { result: null, error: null });
 });
 
-// Обработка формы
 app.post('/', (req, res) => {
     let { weight, height, age, gender } = req.body;
 
